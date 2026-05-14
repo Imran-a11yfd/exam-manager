@@ -6,12 +6,15 @@
 </head>
 <body>
   <h1>Examens enregistrés</h1>
-  <input type="text" id="proprietaire" placeholder="Nom du propriétaire">
-  <button id="afficher">Afficher</button>
+  <div class="input-row">
+    <input type="text" id="proprietaire" placeholder="Nom du propriétaire">
+    <button id="afficher">Afficher</button>
+  </div>
   <div id="resultat"></div>
-  <br>
+  <div class="links">
   <a href="index.html">Accueil</a> |
   <a href="ajouter-question.html">Ajouter une question</a>
+  </div>
 
   <script>
     document.getElementById('afficher').addEventListener('click', () => {
@@ -44,5 +47,90 @@
       });
     });
   </script>
+  <style>
+  
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;  
+  align-items: center;     
+  padding: 40px 20px;
+}
+
+h1 {
+  color: #0066aa;
+  margin: 0;
+  margin-bottom: 30px;    
+  text-align: center;
+}
+
+
+.input-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 40px;      
+}
+
+input {
+  flex: 2;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0066aa;
+  box-shadow: 0 0 8px rgba(0,102,170,0.4);
+}
+
+button {
+  flex: 1;
+  background-color: #0066aa;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #004f80;
+}
+
+
+#resultat {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;      
+}
+
+
+.links {
+  text-align: center;
+}
+
+.links a {
+  color: #0066aa;
+  text-decoration: none;
+  margin: 0 12px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+
+
+  </style>
 </body>
 </html>
