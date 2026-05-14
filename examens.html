@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Liste des examens</title>
+</head>
+<body>
+  <h1>Examens enregistrés</h1>
+  <input type="text" id="proprietaire" placeholder="Nom du propriétaire">
+  <button id="afficher">Afficher</button>
+  <div id="resultat"></div>
+  <br>
+  <a href="index.html">Accueil</a> |
+  <a href="ajouter-question.html">Ajouter une question</a>
+
+  <script>
+    document.getElementById('afficher').addEventListener('click', () => {
+      const proprietaire = document.getElementById('proprietaire').value;
+      const key   = 'examens_' + proprietaire;
+      const exams = JSON.parse(localStorage.getItem(key)) || [];
+      const resultat = document.getElementById('resultat');
+      resultat.innerHTML = '';
+
+      if (exams.length === 0) {
+        resultat.innerHTML = '<p>Aucun examen trouvé.</p>';
+        return;
+      }
+
+      exams.forEach(exam => {
+        const div = document.createElement('div');
+        div.innerHTML = '<h2>' + exam.nom + '</h2>' +
+                        '<p>Durée : ' + exam.duree + ' min</p>' +
+                        '<p>' + exam.description + '</p>';
+
+        const ul = document.createElement('ul');
+        exam.questions.forEach(q => {
+          const li = document.createElement('li');
+          li.textContent = q.enonce + ' (' + q.points + ' pts)';
+          ul.appendChild(li);
+        });
+
+        div.appendChild(ul);
+        resultat.appendChild(div);
+      });
+    });
+  </script>
+</body>
+</html>
